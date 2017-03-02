@@ -12,39 +12,57 @@
   </head>
   <body ng-app='tabTagger' ng-controller='tabCtrl'>
 	  <div class='content'>
-	  		<div class='tabModal'>
-	  			<div class='formGroup'>
-		  			<input type="text" id="fname" name="tabName" placeholder="Tab Name">
-		  			  <input type="color" name="tagColor" value="#ff0000">
-		  			  <div class='tagList'>
-
-		  			  </div>
-		  		</div>
-	  		</div>
-	  		<div class='urlModal'>
+	  		<form name='urlForm' ng-submit='addNew(urlForm)'>
 	  			<div class="row">
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Title">
+				      <input type="text" class="form-control" placeholder="Title" ng-model='urlForm.title'>
 				    </div><!-- /input-group -->
 				  </div><!-- /.col-lg-6 -->
 				  <div class="col-lg-6">
 				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="URL">
+				      <input type="text" class="form-control" placeholder="URL" ng-model='urlForm.url'>
 				      <span class="input-group-btn">
-				        <button class="btn btn-default" type="button">Add Tags</button>
+				        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#tagModal">Add Tags</button>
 				      </span>
 				    </div><!-- /input-group -->
 				  </div><!-- /.col-lg-6 -->
 				</div><!-- /.row -->
+				<div class="modal fade" id='tagModal' tabindex="-1" role="dialog" aria-labelledby="tagModalLabel">
+	  			<div class="modal-dialog" role="document">
+	  				<div class="modal-content">
+	  					<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="tagModalLabel">Add Tag</h4>
+				      </div>
+				      <div class="modal-body">
+				  			<div class='formGroup'>
+					  			<input type="text" id="fname" name="tagName" placeholder="Tag Name">
+					  			  <input type="color" name="tagColor" value="#ff0000">
+					  			  <div class='tagList'>
+
+					  			  </div>
+					  		</div>
+					  </div>
+				  	</div>
+			  	</div>
 	  		</div>
-	  		<button type="button" class="btn btn-primary">Add Tab</button>
+	  		<button type="submit" class="btn btn-primary">Add Tab</button>
+	  		</form>
+	  		
 	  		<button type="button" class="btn btn-default">Open All Tabs!</button>
 	  		<div class='tabFilter'>
 
 	  		</div>
 	  		<div class='allTabs'>
-
+	  			<div ng-repeat='url in urls'>
+        			<div class="thumbnail">
+				      <div class="caption">
+				        <a target="_blank" ng-href="{{url.url}}">{{url.title}}</a>
+				        
+				      </div>
+				    </div>
+      			</div>
 	  		</div>
 	  </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
