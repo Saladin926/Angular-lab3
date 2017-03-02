@@ -1,7 +1,7 @@
 
 angular.module('tabTagger', [])
 
-.controller('tabCtrl', ['$scope', function($scope) {
+.controller('tabCtrl', ['$scope','$window', function($scope,$window) {
 
   $scope.urls = [];
   $scope.tags = [{name:"YouTube",color:"red"},{name:"Google Search",color:"cornflowerblue"}];
@@ -28,4 +28,9 @@ angular.module('tabTagger', [])
     tag.color = '#ff0000';
   };
 
+  $scope.openAll = function(){
+    angular.forEach($scope.urls,function(url){
+      $window.open(url.url,"_blank");
+    });
+  };
 }]);
