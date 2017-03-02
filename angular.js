@@ -7,6 +7,11 @@ angular.module('tabTagger', [])
   $scope.tags = [{name:"YouTube",color:"red"},{name:"Google Search",color:"cornflowerblue"}];
 
   $scope.addNew = function (url) {
+    if(!url.title || !url.url)
+    {
+      $window.alert("Make Sure You Have A Title And URL");
+      return;
+    }
     $scope.urls.push({ 
       title: url.title,
       url: url.url,
@@ -19,6 +24,11 @@ angular.module('tabTagger', [])
   };
 
   $scope.addNewTag = function (tag) {
+    if(!tag.name)
+    {
+      $window.alert("Make Sure You Have A Name");
+      return;
+    }
     $scope.tags.push({ 
       name: tag.name,
       color: tag.color
