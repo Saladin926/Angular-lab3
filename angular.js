@@ -5,7 +5,7 @@ angular.module('tabTagger', [])
 
   $scope.urls = [];
   $scope.tags = [{name:"YouTube",color:"red"},{name:"Google Search",color:"cornflowerblue"}];
-
+  $scope.filterTags = [];
   $scope.addNew = function (url) {
     if(!url.title || !url.url)
     {
@@ -43,4 +43,19 @@ angular.module('tabTagger', [])
       $window.open(url.url,"_blank");
     });
   };
+
+  $scope.tagFilter = function(url){
+    if($scope.filterTags.length <= 0){
+      return true;
+    }
+    var include = false;
+    angular.forEach($scope.filterTags,function(tag){
+      if(url.tags.indexOf(tag) !== -1)
+      {
+        include = true;
+      }
+    });
+    return include;
+  };
 }]);
+

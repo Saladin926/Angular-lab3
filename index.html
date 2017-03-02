@@ -39,8 +39,7 @@
 				      <div class="modal-body">
 				      			<div class='tagList'>
 					  			  	<h3>CTRL-Click To Select Multiple</h3>
-					  			  		<select multiple ng-model='urlForm.tags' ng-options='tag as tag.name for tag in tags'>
-					  			  			
+					  			  		<select multiple ng-model='urlForm.tags' ng-options='tag as tag.name for tag in tags'>		
 					  			  		</select>
 					  			</div>
 				  			<div class='formGroup'>
@@ -60,10 +59,12 @@
 	  		
 	  		<button type="button" class="btn btn-default" ng-click='openAll()'>Open All Tabs!</button>
 	  		<div class='tabFilter'>
-
+	  			<h3>Select tag names to filter by tag</h3>
+	  			<select multiple ng-model='filterTags' ng-options='tag as tag.name for tag in tags'>			  			
+				</select>
 	  		</div>
 	  		<div class='allTabs'>
-	  			<div ng-repeat='url in urls'>
+	  			<div ng-repeat='url in urls |filter:tagFilter'>
         			<div class="thumbnail">
 				      <div class="caption">
 				        <a target="_blank" ng-href="{{url.url}}">{{url.title}}</a>
