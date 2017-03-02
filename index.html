@@ -12,6 +12,7 @@
   </head>
   <body ng-app='tabTagger' ng-controller='tabCtrl'>
 	  <div class='content'>
+	  	<h1>Tab Tagger</h1>
 	  		<form name='urlForm' ng-submit='addNew(urlForm)'>
 	  			<div class="row">
 				  <div class="col-lg-6">
@@ -38,10 +39,8 @@
 				      <div class="modal-body">
 				      			<div class='tagList'>
 					  			  	<h3>CTRL-Click To Select Multiple</h3>
-					  			  		<select multiple>
-					  			  			<option ng-repeat='tag in tags' ng-value='tag.name' ng-style='{color:tag.color}'>
-					  			  				{{tag.name}}
-					  			  			</option>
+					  			  		<select multiple ng-model='urlForm.tags' ng-options='tag as tag.name for tag in tags'>
+					  			  			
 					  			  		</select>
 					  			</div>
 				  			<div class='formGroup'>
@@ -50,6 +49,9 @@
 					  			<button type="button" class="btn btn-primary" ng-click='addNewTag(tagForm)'>Add New Tag</button>	  
 					  		</div>
 					  </div>
+					  <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
 				  	</div>
 			  	</div>
 	  		</div>
@@ -65,7 +67,9 @@
         			<div class="thumbnail">
 				      <div class="caption">
 				        <a target="_blank" ng-href="{{url.url}}">{{url.title}}</a>
-				        
+				        <p>
+				        	<span ng-repeat="tag in url.tags track by $index" ng-style="{color:tag.color}" class='label'>{{tag.name}}</span>
+				      	</p>
 				      </div>
 				    </div>
       			</div>
