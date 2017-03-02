@@ -1,0 +1,20 @@
+h1 {
+    margin: auto;
+    padding: 2em;
+    text-align: center;
+}
+
+.largeForm {
+    margin: auto;
+    padding: 1em;
+}
+
+.tabFilter {
+    margin: auto;
+    padding: 5em;
+}
+
+.buttonCenter {
+    text-align: center;
+    margin: 1em;
+}
