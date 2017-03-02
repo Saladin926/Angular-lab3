@@ -33,15 +33,21 @@
 	  				<div class="modal-content">
 	  					<div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="tagModalLabel">Add Tag</h4>
+					        <h4 class="modal-title" id="tagModalLabel">Add Tags</h4>
 				      </div>
 				      <div class="modal-body">
+				      			<div class='tagList'>
+					  			  	<h3>CTRL-Click To Select Multiple</h3>
+					  			  		<select multiple>
+					  			  			<option ng-repeat='tag in tags' ng-value='tag.name' ng-style='{color:tag.color}'>
+					  			  				{{tag.name}}
+					  			  			</option>
+					  			  		</select>
+					  			</div>
 				  			<div class='formGroup'>
-					  			<input type="text" id="fname" name="tagName" placeholder="Tag Name">
-					  			  <input type="color" name="tagColor" value="#ff0000">
-					  			  <div class='tagList'>
-
-					  			  </div>
+					  			<input type="text" id="fname" name="tagName" placeholder="Tag Name" ng-model='tagForm.name'>
+					  			<input type="color" name="tagColor" value="#ff0000" ng-model='tagForm.color'>
+					  			<button type="button" class="btn btn-primary" ng-click='addNewTag(tagForm)'>Add New Tag</button>	  
 					  		</div>
 					  </div>
 				  	</div>
